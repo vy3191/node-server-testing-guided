@@ -1,6 +1,6 @@
 const supertest = require("supertest");
 const server= require("./index"); // our server won't actually start due to the if statement in index.js
-cosnt db = require("./data/config");
+const db = require("./data/config");
 /*
  Does it return the expected status code?
  Does it return the expected data format?
@@ -21,10 +21,13 @@ test("welcome route", async () => {
 });
 
 test("create a new hobbit route", async () => {
-     const res = await supertest(server).post("/hobbits").send({name:"apple"});
+     const res = await supertest(server).post("/hobbits").send({name:"mango"});
      expect(res.statusCode).toBe(201);
      expect(res.type).toBe("application/json");
-     expect(res.body.name).toBe("apple");
+     expect(res.body.name).toBe("mango");
 });
+
+
+
 
 
