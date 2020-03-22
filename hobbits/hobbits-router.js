@@ -9,6 +9,15 @@ router.get("/", async (req, res, next) => {
 	} catch(err) {
 		next(err)
 	}
+});
+
+router.post("/", async (req,res,next) => {
+	  try{
+			 const newHobbit = await Hobbits.insert(req.body);
+			 res.status(201).json(newHobbit);
+		} catch(err) {
+			 next(err);
+		}
 })
 
 module.exports = router

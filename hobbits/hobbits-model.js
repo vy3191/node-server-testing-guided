@@ -9,21 +9,24 @@ module.exports = {
 }
 
 async function insert(hobbit) {
-  return null
+  const [id] = await db("hobbits").insert(hobbit);
+  return await db("hobbits").where("id", id).first();
 }
 
 async function update(id, changes) {
-  return null
+  await db("hobbits").where({id}).update(changes);
+  return findById(id);
+
 }
 
-function remove(id) {
-  return null
+async function remove(id) {
+  return await db("hobbits").where("id", id).del();
 }
 
 function getAll() {
   return db("hobbits")
 }
 
-function findById(id) {
-  return null
+async function findById(id) {
+  return db("hobbits").where("id", id).first();
 }
