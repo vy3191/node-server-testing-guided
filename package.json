@@ -3,7 +3,7 @@
 	"scripts": {
 		"server": "nodemon -r dotenv/config index.js",
 		"start": "node index.js",
-		"test": "jest --verbose"
+		"test": "cross-env NODE_ENV=test jest --verbose"
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.2",

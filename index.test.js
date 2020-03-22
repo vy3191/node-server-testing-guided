@@ -16,4 +16,11 @@ test("welcome route", async () => {
   expect(res.body.message).toMatch(/welcome/i);
 });
 
+test("create a new hobbit route", async () => {
+     const res = await supertest(server).post("/hobbits").send({name:"apple"});
+     expect(res.statusCode).toBe(201);
+     expect(res.type).toBe("application/json");
+     expect(res.body.name).toBe("apple");
+});
+
 
