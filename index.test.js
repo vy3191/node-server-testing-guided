@@ -1,11 +1,15 @@
 const supertest = require("supertest");
 const server= require("./index"); // our server won't actually start due to the if statement in index.js
+cosnt db = require("./data/config");
 /*
  Does it return the expected status code?
  Does it return the expected data format?
  Does it return the expected data?
 
 */
+beforeEach(async () => {
+   await db.seed.run();
+});
 
 test("welcome route", async () => {
    const res = await supertest(server).get("/");  
